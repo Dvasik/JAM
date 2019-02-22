@@ -4,33 +4,20 @@ using UnityEngine;
 
 public class CameraRot : MonoBehaviour
 {
-  public GameObject go;
-  public float sensitivity = 1F;
-  private Camera goCamera;
-  private Vector3 MousePos;
-  private float MyAngle = 0F;
+  public float sensitivity = 5;
+  private float RotationX;
+  private float RotationY;
   // Start is called before the first frame update
     void Start()
     {
-    goCamera = Camera;
-    go = goCamera.transform.parent.gameObject;
     }
 
     // Update is called once per frame
     void Update()
     {
-    MousePos = Input.mousePosition;
-    }
+    RotationX += Input.GetAxis("Mouse Y") * sensitivity;
+    RotationY += Input.GetAxis("Mouse X") * sensitivity;
 
-  void FixedUpdate()
-  {
-    if (Input.GetMouseButton(1))
-    {
-      MyAngle = 0;
-      MyAngle = sensitivity * ((MousePos.x - (Screen.width / 2)) / Screen.width);
-      goCamera.transform.RotateAround(go.transform.position, goCamera.transform.up, MyAngle);
-      MyAngle = sensitivity * ((MousePos.y - (Screen.height / 2)) / Screen.height);
-      goCamera.transform.RotateAround(go.transform.position, goCamera.transform.right, -MyAngle);
+    transform.rotation = Quaternion.Euler(-RotationX, RotationY, 0);
     }
   }
-}
