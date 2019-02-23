@@ -5,6 +5,7 @@ public class Screame : MonoBehaviour
 {
   public AudioClip screamS;
   public Material screamImage;
+  public Material normalImage;
   void OnCollisionEnter(Collision ScreamTrigger)
   {
     if (ScreamTrigger.gameObject.name == "Cube")
@@ -13,5 +14,9 @@ public class Screame : MonoBehaviour
       AudioSource.PlayClipAtPoint(screamS, transform.position);
       Debug.Log("NOOOOOOOP");
     }
+  }
+  void OnCollisionExit(Collision ScreamTrigger)
+  {
+    gameObject.GetComponent<Renderer>().material = normalImage;
   }
 }

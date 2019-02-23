@@ -4,25 +4,20 @@ using UnityEngine;
 
 public class CameraRotate : MonoBehaviour
 {
-  private float x;
-  private float y;
-  private Vector3 targetRotation;
-  private Vector3 rotateValue;
-  private Quaternion rotation;
-
+  public float sensitivity = 5;
+  private float RotationX;
+  private float RotationY;
+  // Start is called before the first frame update
   void Start()
   {
-    rotation = transform.rotation;
   }
 
+  // Update is called once per frame
   void Update()
   {
-    x = Input.GetAxis("Mouse X");
-    y = Input.GetAxis("Mouse Y");
-    Debug.Log(x + ":" + y);
-    rotateValue = new Vector3(x, y, 0);
-    targetRotation = transform.position + rotateValue;
-    rotation = Quaternion.Euler(x, y, 0);
-    transform.rotation = rotation;
+    RotationX += Input.GetAxis("Mouse Y") * sensitivity;
+    RotationY += Input.GetAxis("Mouse X") * sensitivity;
+
+    transform.rotation = Quaternion.Euler(-RotationX, RotationY, 0);
   }
 }

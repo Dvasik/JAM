@@ -6,7 +6,7 @@ using UnityEngine;
 public class Charactermovement : MonoBehaviour
 {
 
-    public float speed = 18;
+    public float speed = 1;
     private Rigidbody rig;
     // Start is called before the first frame update
     void Start()
@@ -19,8 +19,8 @@ public class Charactermovement : MonoBehaviour
     {
         float hAxis = Input.GetAxis("Horizontal");
         float vAxis = Input.GetAxis("Vertical");
-
-        Vector3 movement = new Vector3(hAxis, 0, vAxis) * speed * Time.deltaTime;
+        
+        Vector3 movement = new Vector3(hAxis, 0, vAxis) * speed/* * Time.deltaTime*/;
         rig.MovePosition(transform.position + movement);
     transform.Rotate(Vector3.up * 30 * Time.deltaTime);  // поворачиваем машинку, 30 градусов/с
     transform.rotation = Quaternion.identity;
