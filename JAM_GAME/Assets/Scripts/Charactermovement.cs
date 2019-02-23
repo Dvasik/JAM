@@ -22,8 +22,8 @@ public class Charactermovement : MonoBehaviour
         
         Vector3 movement = new Vector3(hAxis, 0, vAxis) * speed/* * Time.deltaTime*/;
         rig.MovePosition(transform.position + movement);
-    transform.Rotate(Vector3.up * 30 * Time.deltaTime);  // поворачиваем машинку, 30 градусов/с
-    transform.rotation = Quaternion.identity;
+        transform.Rotate(Vector3.up * 30 * Time.deltaTime);  // поворачиваем машинку, 30 градусов/с
+        transform.rotation = Quaternion.identity;
   }
 }
 

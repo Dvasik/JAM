@@ -19,7 +19,8 @@ public class Motion : MonoBehaviour
     if (Input.GetButtonDown("Jump"))
       q = 1;
     transform.Translate(new Vector3(h / 10, q, v / 10)/* * Time.deltaTime*/);
-    transform.Rotate(Vector3.up * 30 * Time.deltaTime);  // поворачиваем машинку, 30 градусов/с
+    transform.Rotate(h, 0, 0, Space.World);
+    transform.Rotate(0, 0, v, Space.World);
     transform.rotation = Quaternion.identity;
   }
 }
