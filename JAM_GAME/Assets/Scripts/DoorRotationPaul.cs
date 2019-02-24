@@ -20,8 +20,9 @@ public class DoorRotationPaul : MonoBehaviour
         if (other.gameObject.name == "Player")
           transform.rotation = new Quaternion(0, -1f, 0, 1);
     }
-    void OnCollisionExit()
+    void OnCollisionExit(Collision other)
     {
-        transform.rotation = new Quaternion(0, 0, 0, 1); 
+        if (other.gameObject.name != "Player")
+          ;//transform.rotation = new Quaternion(0, 0, 0, 1); 
     }
 }
